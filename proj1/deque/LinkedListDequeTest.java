@@ -4,6 +4,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import edu.princeton.cs.algs4.StdRandom;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 
 /** Performs some basic linked list tests. */
@@ -185,6 +186,21 @@ public class LinkedListDequeTest {
 
     }
 
+    @Test
+    public void testIterator() {
+        LinkedListDeque<Integer> a = new LinkedListDeque<>();
+        for (int i = 0; i < 10; i++) {
+            a.addLast(i);
+        }
+
+        Iterator<Integer> it = a.iterator();
+        for (int i = 0; i < 10; i++) {
+            int x = it.next();
+            assertEquals(x, i);
+        }
+
+        assertFalse(it.hasNext());
+    }
     @Test
     public void testRandomized() {
         final int M = 100000;

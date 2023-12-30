@@ -1,5 +1,8 @@
 package deque;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 public class ArrayDeque<T> implements Deque<T> {
     private T[] items;
     private int size;
@@ -142,4 +145,24 @@ public class ArrayDeque<T> implements Deque<T> {
         return true;
 
     }
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            private int currIdx = 0;
+            @Override
+            public boolean hasNext() {
+                return currIdx < size;
+            }
+
+            @Override
+            public T next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                T res = get(currIdx);
+                currIdx += 1;
+                return res;
+            }
+        };
+    }
+
 }

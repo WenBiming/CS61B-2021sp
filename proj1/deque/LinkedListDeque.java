@@ -1,6 +1,9 @@
 package deque;
 
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 public class LinkedListDeque<T> implements Deque<T>{
     private  class Node {
         private T value;
@@ -162,6 +165,27 @@ public class LinkedListDeque<T> implements Deque<T>{
 
         return true;
 
+    }
+
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            private Node currNode = sentinel.next;
+            @Override
+            public boolean hasNext() {
+                return currNode != sentinel;
+            }
+
+            @Override
+            public T next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+
+                T res = currNode.value;
+                currNode = currNode.next;
+                return res;
+            }
+        };
     }
 
 }
