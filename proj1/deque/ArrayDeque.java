@@ -31,8 +31,10 @@ public class ArrayDeque<T> implements Deque<T> {
         items[front] = item;
         size += 1;
 
-        if (size == items.length)
+        if (size == items.length) {
             expand();
+        }
+
     }
 
     @Override
@@ -41,8 +43,10 @@ public class ArrayDeque<T> implements Deque<T> {
         items[end] = item;
         size += 1;
 
-        if (size == items.length)
+        if (size == items.length) {
             expand();
+        }
+
     }
 
 
@@ -56,29 +60,35 @@ public class ArrayDeque<T> implements Deque<T> {
         front = getIdx(front + 1);
         size -= 1;
 
-        if (size > 0 && items.length >= 16 && 1.0 * size / items.length < 0.25)
+        if (size > 0 && items.length >= 16 && 1.0 * size / items.length < 0.25) {
             contract();
+        }
+
         return val;
     }
 
     @Override
     public T removeLast() {
-        if (isEmpty())
+        if (isEmpty()) {
             return null;
+        }
+
 
         T val = items[end];
         items[end] = null;
         end = getIdx(end - 1);
         size -= 1;
 
-        if (size > 0 && items.length > 16 && 1.0 * size / items.length < 0.25)
+        if (size > 0 && items.length > 16 && 1.0 * size / items.length < 0.25) {
             contract();
+        }
+
         return val;
     }
 
-    public void contract() {
+    private void contract() {
         T[] newArr = (T[]) new Object[items.length / 2];
-        for (int i = 0; i < size; i ++) {
+        for (int i = 0; i < size; i++) {
             int idx = getIdx(front + i);
             newArr[i] = items[idx];
         }
@@ -87,9 +97,9 @@ public class ArrayDeque<T> implements Deque<T> {
         end = front + size - 1;
         items = newArr;
     }
-    public void expand() {
+    private void expand() {
         T[] newArr = (T[]) new Object[items.length * 2];
-        for (int i = 0; i < size; i ++) {
+        for (int i = 0; i < size; i++) {
             int idx = getIdx(front + i);
             newArr[i] = items[idx];
         }
@@ -106,22 +116,28 @@ public class ArrayDeque<T> implements Deque<T> {
 
     @Override
     public void printDeque() {
-        for (int i = 0; i < size(); i ++)
+        for (int i = 0; i < size(); i++)
             System.out.println(get(i) + " ");
         System.out.println();
     }
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof ArrayDeque))
+        if (!(o instanceof ArrayDeque)) {
             return false;
+        }
 
-        if (size != ((ArrayDeque<?>) o).size)
+
+        if (size != ((ArrayDeque<?>) o).size) {
             return false;
+        }
 
-        for (int i = 0; i < size; i ++)
+
+        for (int i = 0; i < size; i++) {
             if (!(((ArrayDeque<?>) o).get(i).equals(this.get(i))))
                 return false;
+        }
+
 
         return true;
 
