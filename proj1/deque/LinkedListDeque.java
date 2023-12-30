@@ -4,7 +4,7 @@ package deque;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class LinkedListDeque<T> implements Deque<T>{
+public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
     private  class Node {
         private T value;
         private Node next;
@@ -151,16 +151,17 @@ public class LinkedListDeque<T> implements Deque<T>{
         }
 
 
-        o = (LinkedListDeque<T>)o;
         if (size != ((LinkedListDeque<?>) o).size) {
             return false;
         }
 
 
-        for (int i = 0; i < size; i++)
+        for (int i = 0; i < size; i++) {
             if (!(((LinkedListDeque<?>) o).get(i).equals(this.get(i)))) {
                 return false;
             }
+        }
+
 
 
         return true;

@@ -199,7 +199,10 @@ public class ArrayDequeTest {
             lld1.addLast(i);
             lld2.addLast(i);
         }
-        assertTrue(lld1.equals(lld2));
+        assertEquals(lld1, lld2);
+
+        lld2.addFirst(33);
+        assertNotEquals(lld1, lld2);
 
     }
 

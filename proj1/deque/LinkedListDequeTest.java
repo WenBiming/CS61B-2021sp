@@ -183,6 +183,8 @@ public class LinkedListDequeTest {
             lld2.addLast(i);
         }
         assertTrue(lld1.equals(lld2));
+        lld1.removeFirst();
+        assertNotEquals(lld1, lld2);
 
     }
 
