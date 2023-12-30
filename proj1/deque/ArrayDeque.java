@@ -9,7 +9,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
     private int front;
     private int end;
 
-    public int getIdx(int i) {
+    private int getIdx(int i) {
         int capacity = items.length;
         return (i % capacity + capacity) % capacity;
     }
@@ -18,7 +18,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         return size;
     }
 
-    public int capacity() {
+    private int capacity() {
         return items.length;
     }
     public ArrayDeque() {
@@ -127,11 +127,6 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof ArrayDeque)) {
-            return false;
-        }
-
-
         if (size != ((ArrayDeque<?>) o).size) {
             return false;
         }
