@@ -1,5 +1,6 @@
 package deque;
 
+import org.checkerframework.checker.units.qual.A;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import edu.princeton.cs.algs4.StdRandom;
@@ -192,6 +193,14 @@ public class LinkedListDequeTest {
         }
 
         assertEquals(lld2, lld3);
+
+        LinkedListDeque<LinkedListDeque> a = new LinkedListDeque<>();
+        ArrayDeque<LinkedListDeque> b = new ArrayDeque<>();
+        a.addLast(lld1);
+        a.addLast(lld2);
+        b.addLast(lld1);
+        b.addLast(lld2);
+        assertEquals(a, b);
 
     }
 

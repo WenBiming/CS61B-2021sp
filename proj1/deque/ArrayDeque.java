@@ -114,14 +114,16 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
 
     @Override
     public T get(int index) {
-       int idx = getIdx(index + front);
-       return items[idx];
+        int idx = getIdx(index + front);
+        return items[idx];
     }
 
     @Override
     public void printDeque() {
-        for (int i = 0; i < size(); i++)
+        for (int i = 0; i < size(); i++) {
             System.out.println(get(i) + " ");
+        }
+
         System.out.println();
     }
 
@@ -132,8 +134,8 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         if (((Deque<?>) o).size() != size) {
             return false;
         }
-        for (int i = 0; i < size; i ++) {
-            if (((Deque<?>) o).get(i) != this.get(i)) {
+        for (int i = 0; i < size; i++) {
+            if (!((Deque<?>) o).get(i).equals(this.get(i))) {
                 return false;
             }
         }
