@@ -24,7 +24,7 @@ public class MaxArrayDequeTest {
 
     @Test
     public void maxArgTest() {
-        MaxArrayDeque<Integer> a = new MaxArrayDeque<>();
+        MaxArrayDeque<Integer> a = new MaxArrayDeque<>(null);
         for (int i = 10; i >= 0; i --)
             a.addFirst(i);
         int actual = 10;

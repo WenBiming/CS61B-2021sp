@@ -125,22 +125,22 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         System.out.println();
     }
 
-    @Override
     public boolean equals(Object o) {
-        if (size != ((ArrayDeque<?>) o).size) {
+        if (!(o instanceof Deque)) {
             return false;
         }
-
-
-        for (int i = 0; i < size; i++) {
-            if (!(((ArrayDeque<?>) o).get(i).equals(this.get(i))))
-                return false;
+        if (((Deque<?>) o).size() != size) {
+            return false;
         }
-
-
+        for (int i = 0; i < size; i ++) {
+            if (((Deque<?>) o).get(i) != this.get(i)) {
+                return false;
+            }
+        }
         return true;
 
     }
+
     public Iterator<T> iterator() {
         return new Iterator<T>() {
             private int currIdx = 0;

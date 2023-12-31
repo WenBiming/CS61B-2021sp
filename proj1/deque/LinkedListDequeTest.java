@@ -186,6 +186,13 @@ public class LinkedListDequeTest {
         lld1.removeFirst();
         assertNotEquals(lld1, lld2);
 
+        ArrayDeque<Integer> lld3 = new ArrayDeque<>();
+        for (int i = 0; i < M; i ++) {
+            lld3.addLast(i);
+        }
+
+        assertEquals(lld2, lld3);
+
     }
 
     @Test
