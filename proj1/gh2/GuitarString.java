@@ -1,6 +1,6 @@
 package gh2;
 
- import deque.Deque;
+import deque.Deque;
 
 import deque.ArrayDeque;
 
@@ -16,7 +16,7 @@ public class GuitarString {
 
     /* Buffer for storing sound data. */
 
-     private Deque<Double> buffer;
+    private Deque<Double> buffer;
 
     /* Create a guitar string of the given frequency.  */
     public GuitarString(double frequency) {
@@ -33,7 +33,7 @@ public class GuitarString {
 
 
         HashSet<Double> set = new HashSet<>();
-        for(int i = 0; i < buffer.size(); i++) {
+        for (int i = 0; i < buffer.size(); i++) {
             double r = Math.random() - 0.5;
             while (set.contains(r)) {
                 r = Math.random() - 0.5;
